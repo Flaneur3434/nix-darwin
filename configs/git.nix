@@ -10,7 +10,7 @@
     # Aliases
     aliases = {
       a = "add -v";
-      c = "commit -m";
+      cm = "commit -m";
       b = "branch";
       sw = "switch";
       fp = "push --force-with-lease";
