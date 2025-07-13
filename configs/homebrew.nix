@@ -24,6 +24,7 @@
       "rustdesk"
       "qbittorrent"
       "vlc"
+      "zoom"
     ];
   };
 }
