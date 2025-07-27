@@ -25,6 +25,7 @@
       "qbittorrent"
       "vlc"
       "zoom"
+      "vmware-fusion"
     ];
   };
 }
