@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
   history_size = 10000;
+  username = "johndoe";
 in
 {
   programs.zsh = {
@@ -34,8 +35,13 @@ in
 
     # need to run `source ~/.zshrc` after nix switch command
     shellAliases = {
-      # add something
+
     };
+
+    profileExtra = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+      export PATH="/Users/${username}/.local/bin:$PATH"
+    '';
 
     initContent = ''
       # Disable flow control to free up Ctrl+S

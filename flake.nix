@@ -34,10 +34,16 @@
 
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
-          environment.systemPackages = [
-            pkgs.mg
-            pkgs.nixfmt-rfc-style
-          ];
+          environment = {
+            systemPackages = [
+              pkgs.mg
+              pkgs.nixfmt-rfc-style
+            ];
+
+            variables = {
+              EDITOR = "gui-emacs";
+            };
+          };
 
           # Allow only specific unfree packages
           nixpkgs.config.allowUnfreePredicate =
