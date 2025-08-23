@@ -29,7 +29,7 @@
       # Use delta for better diffs (optional)
       # core.pager = "delta";
 
-      core.editor = "code --wait"; # or your preferred editor
+      core.editor = "emacsclient -t -a 'emacs -nw'";
     };
   };
 

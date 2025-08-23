@@ -38,6 +38,11 @@ in
 
     };
 
+    sessionVariables = {
+      EDITOR = "emacsclient -t -a 'emacs -nw'";
+      VISUAL = "code --wait";
+    };
+
     profileExtra = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
       export PATH="/Users/${username}/.local/bin:$PATH"

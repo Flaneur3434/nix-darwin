@@ -39,10 +39,6 @@
               pkgs.mg
               pkgs.nixfmt-rfc-style
             ];
-
-            variables = {
-              EDITOR = "gui-emacs";
-            };
           };
 
           # Allow only specific unfree packages
