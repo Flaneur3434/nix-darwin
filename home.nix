@@ -25,7 +25,7 @@
   ];
 
   # Enable locally-provided distributing-gcc package
-  programs.gcc = {
+  programs.distributingGcc = {
     enable = true;
     url = "https://github.com/simonjwright/distributing-gcc/archive/refs/tags/gcc-14.2.0-3-aarch64-cross.tar.gz";
     # sha256 obtained from a local nix-prefetch-url run
