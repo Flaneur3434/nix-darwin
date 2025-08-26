@@ -37,7 +37,7 @@
       userSettings = {
         "editor.minimap.autohide" = true;
         "files.insertFinalNewline" = true;
-        "chat.commandCenter.enabled" = true;
+        "chat.commandCenter.enabled" = false;
         "editor.wordBasedSuggestions" = "allDocuments";
         "editor.rulers" = [ 80 ];
         "find-it-faster.general.useTerminalInEditor" = true;
@@ -45,7 +45,13 @@
         "find-it-faster.general.batTheme" = "zenburn";
         "git.blame.editorDecoration.enabled" = true;
         "nixEnvSelector.useFlakes" = true;
-
+        "github.copilot.enable" = {
+          "c" = false;
+          "rust" = false;
+          "nix" = false;
+          "python" = false;
+        };
+        "editor.inlineSuggest.suppressSuggestions" = false;
         "[nix]" = {
           "editor.tabSize" = 2;
           "editor.insertSpaces" = true;

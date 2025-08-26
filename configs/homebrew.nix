@@ -35,7 +35,7 @@
       "qbittorrent"
       "vlc"
       "zoom"
+      "utm"
     ];
-
   };
 }

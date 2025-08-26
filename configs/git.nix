@@ -3,7 +3,6 @@
   programs.git = {
     enable = true;
 
-    # Your user information (update these)
     userName = "Your Name";
     userEmail = "your.email@example.com";
 
@@ -11,6 +10,7 @@
     aliases = {
       a = "add -v";
       cm = "commit -m";
+      ca = "commit --amend";
       b = "branch";
       sw = "switch";
       fp = "push --force-with-lease";
@@ -29,7 +29,7 @@
       # Use delta for better diffs (optional)
       # core.pager = "delta";
 
-      core.editor = "emacsclient -t -a 'emacs -nw'";
+      core.editor = "code --wait";
     };
   };
 

@@ -54,15 +54,17 @@
 
   # Global iTerm2 settings using targets.darwin.defaults
   targets.darwin.defaults."com.googlecode.iterm2" = {
-    # Global settings
     HideTab = false;
     HideScrollbar = true;
     PromptOnQuit = false;
     OpenNoWindowsAtStartup = false;
-
+    CopySelection = true;
     # Compact tab configuration
     TabStyleWithAutomaticOption = 6;
-
+    # Open TMUX window in new native windows
+    OpenTmuxWindowsIn = 0;
+    # Enable arrow keys when scrolling in alternate screen mode
+    AlternateMouseScroll = true;
     # Set the default profile
     "Default Bookmark Guid" = "nix-default";
   };

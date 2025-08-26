@@ -19,8 +19,8 @@
     ./configs/iterm2.nix
     ./configs/karabiner-elements.nix
     ./configs/darwin-dock.nix
+    ./configs/darwin-keybinds.nix
     ./configs/xe.nix
     ./configs/direnv.nix
-    ./configs/gcc.nix
   ];
 }
