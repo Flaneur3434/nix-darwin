@@ -9,6 +9,8 @@ in
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    autocd = true;
+    historySubstringSearch.enable = true;
 
     # Oh My Zsh configuration
     oh-my-zsh = {
@@ -72,6 +74,12 @@ in
         bindkey '^S' history-incremental-search-forward
         bindkey '^P' up-line-or-history
         bindkey '^N' down-line-or-history
+
+        # Now, override the default fzf bindings to match Emacs isearch
+        # Note: fzf's bindings are typically done with `fzf-mode` widgets.
+        if [[ -n "$fzf-history-widget" ]]; then
+          bindkey '^R' fzf-history-widget
+        fi
 
         # Case-insensitive tab completion
         zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'

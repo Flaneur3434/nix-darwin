@@ -5,9 +5,8 @@
     terminal = "xterm-256color";
     mouse = true;
     keyMode = "emacs";
-    historyLimit = 10000;
-    newSession = true;
-
+    historyLimit = 100000;
+    
     plugins = with pkgs.tmuxPlugins; [
       # Optional: sensible defaults
       sensible

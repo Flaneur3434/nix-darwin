@@ -12,6 +12,7 @@
           bbenoist.nix
           rust-lang.rust-analyzer
           arrterian.nix-env-selector
+          ms-vscode.cpptools
         ]
         ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {

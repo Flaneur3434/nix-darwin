@@ -17,6 +17,7 @@
     # Formulae (command-line tools)
     brews = [
       "defaultbrowser"
+      "tmux"
       {
         name = "emacs-plus";
         args = [ "with-skamacs-icon" ];
@@ -35,7 +36,8 @@
       "qbittorrent"
       "vlc"
       "zoom"
-      "utm"
+      "iterm2"
+      "visual-studio-code"
     ];
   };
 }
