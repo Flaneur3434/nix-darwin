@@ -12,8 +12,8 @@ let
     multi-account-containers
     temporary-containers
     videospeed
-    container-tabs-sidebar
     hover-zoom-plus
+    tree-style-tab
   ];
 
   commonSettings = {
@@ -41,9 +41,51 @@ let
     "network.trr.uri" = "https://dns.mullvad.net/dns-query";
     "network.trr.custom_uri" = "https://dns.mullvad.net/dns-query";
 
-    # Enable Tab Groups
+    # Tab settings
     "browser.tabs.groups.enabled" = true;
+
+    # Sidebar settings
+    "sidebar.verticalTabs" = true;
+    "sidebar.expandOnHover" = true;
+    "browser.ml.chat.sidebar" = false;
+
+    # Enable userChrome
+    "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+    "layout.css.has-selector.enabled" = true;
   };
+
+  userChromeCSS = ''
+    /***** Hide horizontal tab bar only while TST is visible *****/
+    /* Based on: https://github.com/piroor/treestyletab/wiki/Code-snippets-for-custom-style-rules#hide-horizontal-tabs-at-the-top-of-the-window-1349-1672-2147 */
+    html#main-window body:has(
+      #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"][checked="true"]:not([hidden="true"])
+    ) #TabsToolbar {
+      visibility: collapse !important;
+    }
+
+    /* Safety: avoid ghost hit-targets when tabs-in-titlebar is on (same condition) */
+    html#main-window body:has(
+      #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"][checked="true"]:not([hidden="true"])
+    ) #TabsToolbar > .toolbar-items {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    /* Remove the tiny vertical line from the titlebar when tabs-in-titlebar is enabled */
+    #main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar .titlebar-spacer {
+      border-inline-end: none !important;
+    }
+
+    /***** Hide ONLY TST's sidebar header/title *****/
+    #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+      display: none !important;
+    }
+
+    /* Optional: keep your tiny tab spacing tweak (if anything still renders tabs anywhere) */
+    .tab {
+      margin-inline: 1px !important;
+    }
+  '';
 in
 {
   programs.librewolf = {
@@ -67,6 +109,8 @@ in
             # have to reference them outside the with block or use lib.getAttr.
             pkgs.nur.repos.rycee.firefox-addons."10ten-ja-reader"
           ];
+
+        userChrome = userChromeCSS;
       };
 
       university = {
@@ -78,6 +122,7 @@ in
           "full-screen-api.macos-native-full-screen" = false;
         };
         extensions.packages = commonExtensions;
+        userChrome = userChromeCSS;
       };
     };
   };
