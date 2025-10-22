@@ -6,7 +6,7 @@
 ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 
 build:
-	nix build .#darwinConfigurations.simple.system
+	nix build -v .#darwinConfigurations.simple.system
 
 switch: build
 	sudo ./result/sw/bin/darwin-rebuild switch --flake .#simple
