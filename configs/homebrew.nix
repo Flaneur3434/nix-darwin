@@ -3,7 +3,11 @@
   homebrew = {
     enable = true;
     onActivation = {
-      cleanup = "uninstall"; # Remove things not declared
+      # If you remove a cask from your config, you'll need to manually uninstall
+      # it with: brew uninstall --cask <name>
+      cleanup = "none"; # Don't remove anything automatically
+      autoUpdate = false; # Don't auto-update during activation
+      upgrade = false; # Don't auto-upgrade during activation
       extraFlags = [
         "--verbose"
       ];
@@ -12,6 +16,7 @@
     # Add any custom taps here if needed
     taps = [
       "d12frosted/emacs-plus"
+      "grishka/grishka"
     ];
 
     # Formulae (command-line tools)
@@ -38,6 +43,10 @@
       "zoom"
       "iterm2"
       "visual-studio-code"
+      {
+        name = "neardrop";
+        args = { no_quarantine = true; };
+      }
     ];
   };
 }
