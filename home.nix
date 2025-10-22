@@ -19,5 +19,6 @@
     ./configs/darwin-keybinds.nix
     ./configs/xe.nix
     ./configs/direnv.nix
+    ./configs/libreoffice.nix
   ];
 }
