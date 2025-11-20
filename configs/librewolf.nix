@@ -21,7 +21,7 @@ let
     "browser.startup.page" = 3; # 3 = Resume previous session
 
     # Always use cursor keys to navigate (caret browsing)
-    "accessibility.browsewithcaret" = true;
+    "accessibility.browsewithcaret" = false;
 
     # Disable Picture in Picture
     "media.videocontrols.picture-in-picture.enabled" = false;
@@ -45,9 +45,10 @@ let
     "browser.tabs.groups.enabled" = true;
 
     # Sidebar settings
-    "sidebar.verticalTabs" = true;
+    "sidebar.verticalTabs" = false; # Using tree-style-tabs
     "sidebar.expandOnHover" = true;
     "browser.ml.chat.sidebar" = false;
+    "sidebar.visibility" = "hide-sidebar";
 
     # Enable userChrome
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
