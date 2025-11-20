@@ -86,6 +86,14 @@ in
 
         # Additional completion improvements
         zstyle ':completion:*' menu select
+
+        # Show a tag when inside a nix dev shell
+        if [[ -n "$IN_NIX_SHELL" && -z "$_NIX_PROMPT_TAGGED" ]]; then
+          _NIX_PROMPT_TAGGED=1
+          _tag="$NIX_SHELL_NAME"
+          if [[ -z "$_tag" ]]; then _tag="nix"; fi
+          PROMPT="%F{cyan}($_tag)%f $PROMPT"
+        fi
     '';
   };
 }
