@@ -43,6 +43,7 @@
       "zoom"
       "iterm2"
       "visual-studio-code"
+      "flameshot"
       {
         name = "neardrop";
         args = { no_quarantine = true; };
