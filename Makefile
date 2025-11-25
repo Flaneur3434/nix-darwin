@@ -26,6 +26,15 @@ ifndef ARGS
 endif
 	nix search nixpkgs "$(ARGS)"
 
+purge:
+	sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +10
+
+garbage-collect:
+	nix-collect-garbage -d
+
+list-generations:
+	sudo darwin-rebuild --list-generations
+
 # This special target ensures that any "arguments" (which make sees as targets)
 # that don't have explicit rules won't cause an error.
 # It effectively makes them "do nothing" targets.
