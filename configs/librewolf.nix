@@ -56,35 +56,87 @@ let
   };
 
   userChromeCSS = ''
-    /***** Hide horizontal tab bar only while TST is visible *****/
-    /* Based on: https://github.com/piroor/treestyletab/wiki/Code-snippets-for-custom-style-rules#hide-horizontal-tabs-at-the-top-of-the-window-1349-1672-2147 */
-    html#main-window body:has(
-      #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"][checked="true"]:not([hidden="true"])
-    ) #TabsToolbar {
-      visibility: collapse !important;
-    }
+    /***** Tree Style Tab + macOS traffic lights layout *****/
+    /* Behavior:
+    * - When TST sidebar is OPEN:
+    *     - Hide horizontal tab strip
+    *     - Collapse titlebar height (no wasted top bar)
+    *     - Move macOS traffic lights into the main toolbar (over a Flexible Space)
+    *     - Hide TST’s own sidebar header
+    * - When TST sidebar is CLOSED:
+    *     - Firefox behaves normally (tabs + traffic lights in default place)
+    *
+    * NOTE: In Customize Toolbar, add a "Flexible Space" at the FAR LEFT of the
+    * main toolbar; the traffic lights will sit on top of that.
+    */
 
-    /* Safety: avoid ghost hit-targets when tabs-in-titlebar is on (same condition) */
+    /* This is the condition we reuse:
+    *
+    * html#main-window body:has(
+    *   #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"]
+    *                [checked="true"]:not([hidden="true"])
+    * )
+    */
+
+    /***** 1. Hide horizontal tab contents only when TST is visible *****/
     html#main-window body:has(
       #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"][checked="true"]:not([hidden="true"])
     ) #TabsToolbar > .toolbar-items {
-      opacity: 0 !important;
-      pointer-events: none !important;
+      visibility: collapse !important;
     }
 
-    /* Remove the tiny vertical line from the titlebar when tabs-in-titlebar is enabled */
+    /***** 2. Collapse the titlebar only when TST is visible *****/
+    html#main-window[tabsintitlebar="true"] body:has(
+      #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"][checked="true"]:not([hidden="true"])
+    ) #titlebar {
+      appearance: none !important;
+      height: 0 !important;
+    }
+
+    html#main-window[tabsintitlebar="true"] body:has(
+      #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"][checked="true"]:not([hidden="true"])
+    ) #titlebar > #toolbar-menubar {
+      margin-top: 0 !important;
+    }
+
+    html#main-window[tabsintitlebar="true"] body:has(
+      #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"][checked="true"]:not([hidden="true"])
+    ) #TabsToolbar {
+      min-width: 0 !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+    }
+
+    /***** 3. Move window buttons into toolbar only when TST is visible *****/
+    html#main-window[tabsintitlebar="true"] body:has(
+      #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"][checked="true"]:not([hidden="true"])
+    ) #TabsToolbar > .titlebar-buttonbox-container {
+      display: block !important;
+      position: absolute;
+      top: 6px;   /* tweak these two to taste */
+      left: 8px;
+      z-index: 10;
+    }
+
+    /***** 4. Hide ONLY TST's sidebar header/title when TST is visible *****/
+    html#main-window body:has(
+      #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"][checked="true"]:not([hidden="true"])
+    ) #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+      display: none !important;
+    }
+
+    /***** 5. Optional: small tab spacing if anything still renders tabs somewhere *****/
+    .tab {
+      margin-inline: 1px !important;
+    }
+
+    /***** 6. Optional: remove tiny vertical line from titlebar spacer (always) *****/
     #main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar .titlebar-spacer {
       border-inline-end: none !important;
     }
 
-    /***** Hide ONLY TST's sidebar header/title *****/
-    #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-      display: none !important;
-    }
-
-    /* Optional: keep your tiny tab spacing tweak (if anything still renders tabs anywhere) */
-    .tab {
-      margin-inline: 1px !important;
+    #sidebar-box {
+      min-width: 100px !important;
     }
   '';
 in
