@@ -44,7 +44,6 @@
       "iterm2"
       "visual-studio-code"
       "flameshot"
-      "steam"
       "balenaetcher"
       "moonlight"
       {
