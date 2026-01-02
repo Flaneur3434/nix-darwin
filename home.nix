@@ -20,5 +20,6 @@
     ./configs/xe.nix
     ./configs/direnv.nix
     ./configs/libreoffice.nix
+    ./configs/rsync.nix
   ];
 }
