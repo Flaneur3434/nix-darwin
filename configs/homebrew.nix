@@ -44,6 +44,9 @@
       "iterm2"
       "visual-studio-code"
       "flameshot"
+      "steam"
+      "balenaetcher"
+      "moonlight"
       {
         name = "neardrop";
         args = { no_quarantine = true; };
