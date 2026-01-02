@@ -21,5 +21,6 @@
     ./configs/direnv.nix
     ./configs/libreoffice.nix
     ./configs/rsync.nix
+    ./configs/mpv.nix
   ];
 }
