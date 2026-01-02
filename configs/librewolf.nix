@@ -53,6 +53,9 @@ let
     # Enable userChrome
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     "layout.css.has-selector.enabled" = true;
+
+    # Unload inactive tabs aggressively
+    "browser.tabs.min_inactive_duration_before_unload" = 300000; # in ms
   };
 
   userChromeCSS = ''
