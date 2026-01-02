@@ -48,6 +48,7 @@ in
     profileExtra = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
       export PATH="/Users/${username}/.local/bin:$PATH"
+      export PATH="/Users/${username}/nix-darwin/bin:$PATH"
 
       # GCC 14.2.0 with ADA support enabled
       export PATH="/opt/gcc-14.2.0-3-aarch64/bin:$PATH"

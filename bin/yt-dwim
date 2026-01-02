@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $(basename "$0") <url> [more-urls...]"
+  exit 1
+fi
+
+COOKIES_FILE="$HOME/Temporary/cookies.Personal.txt"
+
+# Base options for best quality + embedded thumbnail
+BASE_OPTS=(
+  --embed-thumbnail
+  --embed-metadata
+  -f "bv*+ba/b"     # best video + best audio, fallback to best
+)
+
+# Add cookies if file exists
+if [[ -f "$COOKIES_FILE" ]]; then
+  BASE_OPTS+=(--cookies "$COOKIES_FILE")
+fi
+
+for url in "$@"; do
+  # Simple heuristic: if URL contains "list=", treat as playlist
+  if [[ "$url" == *"list="* ]]; then
+    echo "Detected playlist: $url"
+    yt-dlp \
+      "${BASE_OPTS[@]}" \
+      --yes-playlist \
+      -o "%(playlist_title)s/%(title)s.%(ext)s" \
+      "$url"
+  else
+    echo "Detected single video: $url"
+    yt-dlp \
+      "${BASE_OPTS[@]}" \
+      -o "%(title)s.%(ext)s" \
+      "$url"
+  fi
+done
