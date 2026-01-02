@@ -57,6 +57,16 @@
           "editor.tabSize" = 2;
           "editor.insertSpaces" = true;
         };
+
+        "terminal.integrated.shellIntegration.decorationsEnabled" = "never";
+        "terminal.integrated.stickyScroll.enabled" = false;
+
+        "extensions.ignoreRecommendations" = true;
+
+        "workbench.statusBar.visible" = false;
+        "workbench.colorTheme" = "Visual Studio Dark - C++";
+        "workbench.activityBar.location" = "hidden";
+        "workbench.editor.centerFixedLayout" = true;
       };
       keybindings = [
         {
