@@ -35,9 +35,11 @@
       osd-bar = "yes";
 
       # Cache (helps with network/remote media)
-      "cache" = "yes";
-      "cache-default" = "4000000"; # ~4 MB
-      "cache-pause" = "yes";
+      cache = "yes";
+      demuxer-max-bytes = "400M";
+      demuxer-max-back-bytes = "100M";
+
+
 
       # Screenshots
       screenshot-directory = "~/Pictures/mpv";
@@ -72,10 +74,10 @@
 
       # Screenshots
       "s"     = "screenshot";        # normal
-      "S"     = "screenshot-window"; # whole window (with OSD)
+      "S"     = "screenshot window"; # whole window (with OSD)
 
       # Toggle stats & OSD
-      "i"     = "show-text \"${filename}\"";
+      "i"     = "show-text \"\${filename}\"";
       "TAB"   = "script-binding stats/display-stats-toggle";
 
       # Quit

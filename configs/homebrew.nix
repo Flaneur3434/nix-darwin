@@ -35,17 +35,17 @@
       "keepassxc"
       "signal"
       "karabiner-elements"
-      "tailscale"
+      "tailscale-app"
       "discord"
       "rustdesk"
       "qbittorrent"
-      "vlc"
       "zoom"
       "iterm2"
       "visual-studio-code"
       "flameshot"
       "balenaetcher"
       "moonlight"
+      "monitorcontrol"
       {
         name = "neardrop";
         args = { no_quarantine = true; };

@@ -17,6 +17,7 @@
         sw = "switch";
         fp = "push --force-with-lease";
         s = "status";
+        g = "log --date=format:%Y-%m-%dT%H:%M --format='%C(auto)%h -%d %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --graph";
       };
 
       # Optional: Additional git settings

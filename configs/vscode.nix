@@ -43,7 +43,7 @@
         "editor.rulers" = [ 80 ];
         "find-it-faster.general.useTerminalInEditor" = true;
         "find-it-faster.general.killTerminalAfterUse" = true;
-        "find-it-faster.general.batTheme" = "zenburn";
+        "find-it-faster.general.batTheme" = "Solarized (dark)";
         "git.blame.editorDecoration.enabled" = true;
         "nixEnvSelector.useFlakes" = true;
         "github.copilot.enable" = {
@@ -62,11 +62,9 @@
         "terminal.integrated.stickyScroll.enabled" = false;
 
         "extensions.ignoreRecommendations" = true;
+        "terminal.integrated.macOptionIsMeta" = true;
 
-        "workbench.statusBar.visible" = false;
-        "workbench.colorTheme" = "Visual Studio Dark - C++";
-        "workbench.activityBar.location" = "hidden";
-        "workbench.editor.centerFixedLayout" = true;
+        "editor.wordWrap" = false;
       };
       keybindings = [
         {
