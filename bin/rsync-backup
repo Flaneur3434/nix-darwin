@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -lt 2 ]]; then
+  echo "Usage: $(basename "$0") <remote-target-dir> <file-or-dir> [file-or-dir ...]"
+  echo "Example: $(basename "$0") /mnt/media/Movies/ show.mp4 Folder/"
+  exit 1
+fi
+
+REMOTE_USER_HOST="media@10.10.0.133"
+
+# First argument = remote directory
+REMOTE_DIR="$1"
+shift
+
+# Remaining arguments = local paths
+LOCAL_ITEMS=("$@")
+
+echo "Uploading to: ${REMOTE_USER_HOST}:${REMOTE_DIR}"
+echo
+
+rsync -avh --progress --no-perms --no-acls --no-xattrs \
+  -e ssh \
+  -- "${LOCAL_ITEMS[@]}" "${REMOTE_USER_HOST}:${REMOTE_DIR}"

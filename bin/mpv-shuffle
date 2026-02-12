@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -lt 2 ]]; then
+  echo "Usage: $(basename "$0") <directory> <count>"
+  exit 1
+fi
+
+ROOT_DIR=$1
+COUNT=$2
+
+[[ -d "$ROOT_DIR" ]] || { echo "Not a directory: $ROOT_DIR" >&2; exit 1; }
+[[ "$COUNT" =~ ^[0-9]+$ && "$COUNT" -gt 0 ]] || { echo "Count must be positive integer" >&2; exit 1; }
+
+# find -> shuf (limit N) -> xargs mpv
+# null-delimited the whole way so spaces etc. are safe
+find "$ROOT_DIR" -type f \
+  \( -iname '*.mp4' -o -iname '*.mkv' -o -iname '*.webm' \) \
+  -print0 \
+| shuf -z -n "$COUNT" \
+| xargs -0 mpv --keep-open=yes --force-window=immediate
